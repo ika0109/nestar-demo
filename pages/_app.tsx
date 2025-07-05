@@ -2,12 +2,12 @@
 import type { AppProps } from "next/app";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-import { Light } from "@/scss/MaterialTheme";
+import { light } from "@/scss/MaterialTheme";
 import { useState } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   // @ts-ignore
-  const [theme, setTheme] = useState(createTheme(Light));
+  const [theme, setTheme] = useState(createTheme(light));
 
   // Socket.io, Redux, MUI ...
   return (
