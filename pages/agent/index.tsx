@@ -3,12 +3,12 @@ import { NextPage } from "next";
 import { Stack } from "@mui/material";
 import withLayoutBasic from "../../libs/components/layout/LayoutBasic";
 
-const Community: NextPage = () => {
+const AgentList: NextPage = () => {
   return (
     <div style={{ margin: "20px 0" }}>
-      <Stack className={"container"}>COMMUNITY</Stack>
+      <Stack className={"container"}>AGENTS LIST</Stack>
     </div>
   );
 };
 
-export default withLayoutBasic(Community);
+export default withLayoutBasic(AgentList);
