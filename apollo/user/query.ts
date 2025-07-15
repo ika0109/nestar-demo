@@ -1,0 +1,46 @@
+import { gql } from "@apollo/client";
+
+/********************
+ *     PROPERTY    *
+ *********************/
+
+export const GET_PROPERTIES = gql`
+  query GetProperties($input: PropertiesInquiry!) {
+    getProperties(input: $input) {
+      list {
+        _id
+        propertyType
+        propertyStatus
+        propertyLocation
+        propertyAddress
+        propertyTitle
+        propertyPrice
+        propertySquare
+        propertyBeds
+        propertyRooms
+        propertyViews
+        propertyLikes
+        propertyComments
+        propertyRank
+        propertyImages
+        propertyDesc
+        propertyBarter
+        propertyRent
+        memberId
+        createdAt
+        soldAt
+        deletedAt
+        constructedAt
+        updatedAt
+        meLiked {
+          memberId
+          likeRefId
+          myFavorite
+        }
+      }
+      metaCounter {
+        total
+      }
+    }
+  }
+`;

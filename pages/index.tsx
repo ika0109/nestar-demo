@@ -10,16 +10,47 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
+import { useQuery } from "@apollo/client";
+
+import useDeviceDetect from "@/libs/components/hooks/useDeviceDetect";
+import { GET_PROPERTIES } from "@/apollo/user/query";
+
 const Home: NextPage = () => {
-  return (
-    <Stack className={"home-page"}>
-      <TrendProperties />
-      <PopularProperties />
-      <Advertisement />
-      <TopProperties />
-      <TopAgents />
-    </Stack>
-  );
+  const device = useDeviceDetect();
+
+  const {
+    loading: getPropertiesLoading,
+    error: getPropertiesError,
+    data: getPropertiesData,
+    refetch: getPropertiesRefetch,
+  } = useQuery(GET_PROPERTIES, {
+    fetchPolicy: "network-only",
+    variables: {
+      input: {
+        page: 1,
+        limit: 8,
+        sort: "createdAt",
+        direction: "DESC",
+        search: {},
+      },
+    },
+  });
+
+  console.log("getPropertiesData", getPropertiesData);
+
+  if (device === "mobile") {
+    return <Stack>HOMEPAGE MOBILE</Stack>;
+  } else {
+    return (
+      <Stack className={"home-page"}>
+        <TrendProperties />
+        <PopularProperties />
+        <Advertisement />
+        <TopProperties />
+        <TopAgents />
+      </Stack>
+    );
+  }
 };
 
 export default withLayoutMain(Home);
